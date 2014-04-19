@@ -3,9 +3,22 @@
 // @namespace  http://use.i.E.your.homepage/
 // @version    0.1
 // @description  enter something useful
-// @match      ://*.wikipedia.org/*
+// @match      http://*.wikipedia.org/*
+// @match      https://*.wikipedia.org/*
 // @copyright  2012+, Vitor
 // ==/UserScript==
+
+
+//ugly stuff
+var protocol =   window.location.href.split("://")[0]
+
+//load jquery ui
+var js = document.createElement("script");
+js.type = "text/javascript";
+js.src = protocol + "://code.jquery.com/ui/1.10.4/jquery-ui.min.js";
+document.body.appendChild(js);
+
+
 
 
 $(window).hashchange(hashchanged); 
@@ -16,13 +29,16 @@ function handleAjaxResponse(content){
 }
 
 
+var debug = false; 
+var debugLog = debug?function(m){console.log(m)}:function(){};
+
 function parseAjaxResponse(content,windowId){
 	//put it on the mouse pos haha.
-     console.log(content);
+     debugLog(content);
     var pageId = 0;
     for(pageId in content.query.pages){}
     
-    console.log(content.query.pages[pageId].extract);
+    debugLog(content.query.pages[pageId].extract);
     
     $("#" +windowId).html(content.query.pages[pageId].extract);
 }
@@ -32,25 +48,34 @@ var mouse = {x:0,y:0};
 $("body").mousemove(function(e) {
     mouse.x = e.pageX;
     mouse.y = e.pageY;
-    //console.log(mouse);
+    //debugLog(mouse);
 })
 
 
 openwindows = [];
 $("body").click(function(){
-    console.log("close window")
+    debugLog("close window")
     for (var i in openwindows){
     	$(openwindows[i]).remove();
     }
+    window.location.hash = "/";
 
 });
+
+var windowContainers = $("<div>");
+
+$("body").append(windowContainers);
+
+windowContainers.css({
+    position:"absolute",top:0,left:0
+})
 function createWindow(){
 	//create a new div and return its id to put the ajax content in here afterwards. Also put a link and stuff.
     
     var div = $("<div>");
-    $("body").append(div);
+    windowContainers.append(div);
     
-    $(div).click(function(e){e.stopPropagation();console.log("dont cose windos")});
+    $(div).click(function(e){e.stopPropagation();debugLog("dont close windos")});
     
     var id = "_w"+ Math.floor(Math.random() * 100000);
     
@@ -58,17 +83,21 @@ function createWindow(){
     openwindows.push(div);
     div.css({
         position:"absolute",
-        width:"300px",
-        height:"100px",
+        width:"400px",
+        height:"130px",
         top:mouse.y+20,
-        left:mouse.x-100,
-        background:"white",
-        border:"1px solid black",
+        left:mouse.x-180, 
+         
+        background:"rgba(255,255,255,1)",
+        border:"1px solid rgba(0,0,0,0.5)",
         padding:"5px",
-        "font-size":"12px"
+        "font-size":"12px",
+        cursor:"move"
         
         
-    })
+    });
+    
+    div.draggable()//.resizable()
     return id;
 }
 
@@ -77,7 +106,9 @@ function loadContent(title){
      
 	//var url = "/w/api.php?action=parse&page="+title+"&format=json&prop=text&section=1";
     
-    var url = "https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exchars=200&titles="+title+"&format=json";
+    
+    title = title.split("#")[0] //ignore # on the link :/ try to get this part using the api
+    var url = protocol + "://en.wikipedia.org/w/api.php?action=query&prop=extracts&exchars=300&titles="+title+"&format=json";
     
     
     
@@ -88,7 +119,7 @@ function loadContent(title){
     $.ajax({
         url:url,
         success:function (wid){
-            console.log("returning function for wid="+wid)
+            debugLog("returning function for wid="+wid)
             return function(d){
                 parseAjaxResponse(d,wid)
             }
@@ -105,7 +136,7 @@ function hashchanged(){
     
     var hash = window.location.hash.split("/");
     if (hash[1] == "wiki"){
-		console.log("load" + window.location.hash ); 
+		debugLog("load" + window.location.hash ); 
         loadContent(hash[2]);
     }
 }
@@ -113,7 +144,18 @@ function hashchanged(){
 $("#bodyContent").find("a").each(function(){
     var href = $(this).attr("href");
     if (href.charAt(0) != "#"){
-		$(this).attr("href","#" + href);
+		//$(this).attr("href","#" + href);
+        $(this).click(function(evnt){
+            //prevent the script to run when oppening the link i new tab
+            if (evnt.ctrlKey || evnt.shiftKey || evnt.metaKey || (evnt.which == 2)) {   
+                evnt.stopPropagation(); //dont close the opened windows and..
+                return; //do nothing else
+            }
+            
+            window.location.hash = $(this).attr("href");
+           return false;
+            
+        });
         //also change the onmidle mouse button maybe...
     }
 })
