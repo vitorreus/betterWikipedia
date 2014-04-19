@@ -17,7 +17,7 @@ Instructions:
 
 
 TODO: 
-* Middle-mouse clicks and similar actions to open link in new tab should open them in new tab 
+* Persistent links across browsers restart (Use the hash to save an array of open sections)
 * Do a better query of the wikipedia API
 * Nested queries
 * Expand current content
