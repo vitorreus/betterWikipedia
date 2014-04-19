@@ -6,4 +6,21 @@
 // @match      ://*.wikipedia.org/*
 // @copyright  2012+, Vitor
 // ==/UserScript==
-console.log("This will be the better wikipedia reading based on this http://www.gizmodo.co.uk/2014/04/i-wish-i-could-read-wikipedia-like-this/");
+
+
+$(window).hashchange(hashchanged); 
+
+function hashchanged(){
+    
+    var hash = window.location.hash.split("/");
+    if (hash[1] == "wiki"){
+		console.log("load" + window.location.hash );
+    }
+}
+
+$("#bodyContent").find("a").each(function(){
+    var href = $(this).attr("href");
+    if (href.charAt(0) != "#"){
+		$(this).attr("href","#" + href);
+    }
+})
