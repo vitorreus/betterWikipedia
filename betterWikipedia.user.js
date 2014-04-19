@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       Better Wikipedia
 // @namespace  http://use.i.E.your.homepage/
-// @version    0.3
+// @version    0.4
 // @description  enter something useful
 // @match      http://*.wikipedia.org/*
 // @match      https://*.wikipedia.org/*
@@ -40,7 +40,7 @@ var debug = false;
 var debugLog = debug?function(m){console.log(m)}:function(){};
 
 function parseAjaxResponse(content,windowId){
-	//put it on the mouse pos haha.
+    //put it on the mouse pos haha.
      debugLog(content);
     var pageId = 0;
     for(pageId in content.query.pages){}
@@ -63,13 +63,13 @@ openwindows = [];
 $("body").click(function(){
     debugLog("close window")
     for (var i in openwindows){
-    	$(openwindows[i]).remove();
+        $(openwindows[i]).remove();
     }
     window.location.hash = "/";
 
 });
 
-var windowContainers = $("<div>");
+var windowContainers = $("<div id='windowContainers'>");
 
 $("body").append(windowContainers);
 
@@ -77,7 +77,7 @@ windowContainers.css({
     position:"absolute",top:0,left:0
 })
 function createWindow(){
-	//create a new div and return its id to put the ajax content in here afterwards. Also put a link and stuff.
+    //create a new div and return its id to put the ajax content in here afterwards. Also put a link and stuff.
     
     var div = $("<div>");
     windowContainers.append(div);
@@ -99,19 +99,21 @@ function createWindow(){
         border:"1px solid rgba(0,0,0,0.5)",
         padding:"5px",
         "font-size":"12px",
-        cursor:"move"
+        cursor:"move", 
+        "border-radius":3,
+        "box-shadow":"0 0 20px rgba(0,0,0,0.7)"
         
         
     });
     
-    div.draggable()//.resizable()
+    div.draggable({  stack:  '#windowContainers div' })//.resizable()
     return id;
 }
 
 
 function loadContent(title){
      
-	//var url = "/w/api.php?action=parse&page="+title+"&format=json&prop=text&section=1";
+    //var url = "/w/api.php?action=parse&page="+title+"&format=json&prop=text&section=1";
     
     
     title = title.split("#")[0] //ignore # on the link :/ try to get this part using the api
@@ -147,7 +149,7 @@ function loadContent(title){
 $("#bodyContent").find("a").each(function(){
     var href = $(this).attr("href");
     if (href.charAt(0) != "#"){
-		//$(this).attr("href","#" + href);
+        //$(this).attr("href","#" + href);
         $(this).click(function(evnt){
             //prevent the script to run when oppening the link i new tab
             if (evnt.ctrlKey || evnt.shiftKey || evnt.metaKey || (evnt.which == 2)) {   
