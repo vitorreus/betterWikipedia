@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       Better Wikipedia
 // @namespace  http://use.i.E.your.homepage/
-// @version    0.1
+// @version    0.2
 // @description  enter something useful
 // @match      http://*.wikipedia.org/*
 // @match      https://*.wikipedia.org/*
@@ -108,7 +108,10 @@ function loadContent(title){
     
     
     title = title.split("#")[0] //ignore # on the link :/ try to get this part using the api
-    var url = protocol + "://en.wikipedia.org/w/api.php?action=query&prop=extracts&exchars=300&titles="+title+"&format=json";
+    //var url = protocol + "://en.wikipedia.org/w/api.php?action=query&prop=extracts&exchars=300&titles="+title+"&format=json";
+    
+    var url = window.location.origin + "/w/api.php?action=query&prop=extracts&exchars=300&titles="+title+"&format=json";
+    
     
     
     
