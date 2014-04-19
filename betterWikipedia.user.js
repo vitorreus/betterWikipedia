@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       Better Wikipedia
 // @namespace  http://use.i.E.your.homepage/
-// @version    0.2
+// @version    0.3
 // @description  enter something useful
 // @match      http://*.wikipedia.org/*
 // @match      https://*.wikipedia.org/*
@@ -20,8 +20,15 @@ document.body.appendChild(js);
 
 
 
-
-$(window).hashchange(hashchanged); 
+function hashchanged(){
+    
+    var hash = window.location.hash.split("/");
+    if (hash[1] == "wiki"){
+        debugLog("load" + window.location.hash ); 
+        loadContent(hash[2]);
+    }
+}
+$(window).bind('hashchange', hashchanged);
  
 
 function handleAjaxResponse(content){
@@ -135,14 +142,7 @@ function loadContent(title){
 
 
 
-function hashchanged(){
-    
-    var hash = window.location.hash.split("/");
-    if (hash[1] == "wiki"){
-		debugLog("load" + window.location.hash ); 
-        loadContent(hash[2]);
-    }
-}
+
 
 $("#bodyContent").find("a").each(function(){
     var href = $(this).attr("href");
