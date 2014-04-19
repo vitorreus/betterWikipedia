@@ -9,7 +9,7 @@ This is a work in progress.
  
 Instructions:
 --
-* If your browser doesn't support userscript install a plugin such as Greasemonkey (Firefox) or Tampermonkey (Chrome)
+* If your browser doesn't support userscript, install a plugin such as [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) (Firefox) or [Tampermonkey](https://chrome.google.com/webstore/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo) (Chrome)
 * Install the userscript from [here](https://raw.github.com/vitorreus/betterWikipedia/master/betterWikipedia.user.js)
 
 
