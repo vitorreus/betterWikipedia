@@ -5,12 +5,12 @@ Better wikipedia reading based on this http://www.gizmodo.co.uk/2014/04/i-wish-i
 This is a work in progress.
 
 
-![preview](screen.png)
+![preview](://raw.github.com/vitorreus/betterWikipedia/master/screen.png)
  
 Instructions:
 --
 * If your browser doesn't support userscript install a plugin such as Greasemonkey (Firefox) or Tampermonkey (Chrome)
-* Install the userscript from [here](betterWikipedia.user.js)
+* Install the userscript from [here](://raw.github.com/vitorreus/betterWikipedia/master/betterWikipedia.user.js)
 
 
 
