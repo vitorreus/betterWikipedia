@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name       Better Wikipedia
-// @namespace  http://use.i.E.your.homepage/
-// @version    0.4
+// @namespace  github.com/vitorreus/betterWikipedia
+// @version    0.5
 // @description  enter something useful
 // @match      http://*.wikipedia.org/*
 // @match      https://*.wikipedia.org/*
-// @copyright  2012+, Vitor
+// @copyright  2014+, Vitor
 // ==/UserScript==
 
 
@@ -119,7 +119,7 @@ function loadContent(title){
     title = title.split("#")[0] //ignore # on the link :/ try to get this part using the api
     //var url = protocol + "://en.wikipedia.org/w/api.php?action=query&prop=extracts&exchars=300&titles="+title+"&format=json";
     
-    var url = window.location.origin + "/w/api.php?action=query&prop=extracts&exchars=300&titles="+title+"&format=json";
+    var url = window.location.origin + "/w/api.php?action=query&prop=extracts&exchars=300&titles="+title+"&format=json&redirects";
     
     
     
