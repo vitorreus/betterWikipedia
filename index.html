@@ -7,13 +7,15 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script> 
+    <script src="javascripts/github.commits.widget.js"></script> 
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
-  <body>
-    <div class="wrapper">
+  <body> 
       <header>
         <h1>Better Wikipedia</h1>
         
@@ -53,27 +55,49 @@
 
 <p><img src="https://raw.github.com/vitorreus/betterWikipedia/master/screen.png" alt="preview"></p>
 
-<h2>
-<a name="todo-" class="anchor" href="#todo-"><span class="octicon octicon-link"></span></a>TODO: </h2>
-
-<ul>
-<li>Do a better query of the wikipedia API:
-
-<ul>
-<li>Retrieve subsection content when link has a hash, (for instance wiki/title#subsection)</li>
-</ul>
-</li>
-<li>Expand current content retrieving more content when clicking on the 3 dots (...)</li>
-<li>Nested queries</li>
-<li>Use fancy inlining of content instead of windows</li>
-<li>Make opened links be persistent across browsers restart (Use the hash to save an array of open sections)</li>
-</ul>
       </section>
+
+
+<aside>
+
+
+
+<div id="github-commits">
+  
+
+</div>
+
+
+
+  <h2>
+  <a name="todo-" class="anchor" href="#todo-"><span class="octicon octicon-link"></span></a>TODO: </h2>
+
+  <ul>
+  <li>Do a better query of the wikipedia API:
+
+  <ul>
+  <li>Retrieve subsection content when link has a hash, (for instance wiki/title#subsection)</li>
+  </ul>
+  </li>
+  <li>Expand current content retrieving more content when clicking on the 3 dots (...)</li>
+  <li>Nested queries</li>
+  <li>Use fancy inlining of content instead of windows</li>
+  <li>Make opened links be persistent across browsers restart (Use the hash to save an array of open sections)</li>
+  </ul>
+</aside>
+
+<script>
+    $(function() {
+        $('#github-commits').githubInfoWidget(
+            { user: 'vitorreus', repo: 'betterWikipedia', branch: 'master', last: 5 });
+    });
+</script>
+
+
       <footer>
         <p>This project is maintained by <a href="https://github.com/vitorreus">vitorreus</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://IzumiPortfolio.com">Izumi</a></small></p>
-      </footer>
-    </div>
+      </footer> 
     <script src="javascripts/scale.fix.js"></script>
     
   </body>
