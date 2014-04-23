@@ -138,8 +138,46 @@ header ul a, footer ul a , .instructions ul a {
   border-radius: 5px;
   
 }
+.aboutWrapper{
+  padding-right: 641px; 
+}
+.about{
+  
+
+
+  float: left;
+}
+
+ section{
+
+  max-width: 2360px;
+  margin:auto;
+}
+
+.instructionsWrapper{
+
+  padding-left: 567px;
+  
+
+  position: relative;
+
+}
+.instructionsPositioner{
+ max-width: 550px;
+    margin: auto;
+
+}
+
+.instructions {
+ 
+
+  position: absolute;
+
+    
+
+}
 .instructions ul li{
-    width: 206px;
+    width: 227px;
 
   
     float: left;
@@ -154,10 +192,7 @@ header ul a, footer ul a , .instructions ul a {
   clear: both;
 }
 
-.instructions {
 
-  float: left
-}
 .basedUponImage{
     float: right;
     margin: 0 0 29px 0;
@@ -168,15 +203,45 @@ header ul a, footer ul a , .instructions ul a {
     float:left;
     
 
-    margin: 0px 50px 50px 0;
+    margin: 0px 0 50px 0;
 
     /* clear: both; */
 
+    border: 2px solid #a9c4d7;
+
+    border-radius: 5px 5px 0 5px;
+
+    position: relative;
+
+}
+.screenshot .screenshotCaption{
+  position:absolute;
+    left: 100%;
+    top: 100%;
+
+}
+.screenshot h2 {
+    position:relative;
+    top: -48px; /* 50 -2 because of border*/
+    
+    background: #a9c4d7;
+    text-transform: inherit;
+    line-height: 50px;
+    color: white;
+    width: 137px;
+    text-align: center;
+    border-radius: 0 5px 5px 0;
+}
+
+.crop{
+  /* height: 500px; */
+  overflow: hidden;
 }
 
 section, aside, footer{
   padding: 50px;
   clear: both;
+  margin: auto;
 }
 
 section h2, footer h2{
@@ -216,6 +281,10 @@ hr {
 ul.download {
 
   margin-left: 110px;
+  
+
+  margin-bottom: 141px;
+
 }
 
 ul.download li a{
@@ -234,6 +303,25 @@ footer{
     text-align: center;
   
 }
+
+
+@media print, screen and (max-width: 1220px) {
+  
+  .instructions {
+    float:inherit;
+    position: inherit;
+ 
+
+  }
+
+  .instructionsWrapper{
+    padding: 0
+  }
+
+}
+
+
+
 @media print, screen and (max-width: 960px) {
   
   div.wrapper {
@@ -241,10 +329,19 @@ footer{
     margin:0;
   }
   
+
+  .aboutWrapper {
+
+    padding: 0;
+  }
   header, section, footer {
     float:none;
     position:static;
     width:auto;
+  }
+
+  .instructions, .basedUponImage {
+    float: inherit;
   }
 
   aside > div {
@@ -252,9 +349,28 @@ footer{
   float:none;
 }
   
+.screenshot {
+
+  border-radius: 5px;
+}
+
+
+
+.screenshot .screenshotCaption{
+   position: inherit;
+
+  
+    top: 0;
+    left: 0;
+}
+  .screenshot h2{
+   top:0;
+    width: inherit;
+    margin: 0;
+    border-radius: 0;
+}
   
   section {
-    border:1px solid #e5e5e5;
     border-width:1px 0;
     /* padding:20px 0; */
     margin:0 0 20px;
@@ -286,8 +402,10 @@ footer{
 }
 
 @media print, screen and (max-width: 480px) {
-  body {
-    padding:15px;
+
+  ul.download {
+
+    margin-left: inherit;
   }
   
   header ul {
