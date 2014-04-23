@@ -112,29 +112,66 @@ aside{
   background:#b2c2cf;
 }
 
-header ul , footer ul {
+header ul , footer ul , .instructions ul {
   list-style:none; 
   text-align: center;
   margin: 24px 0 0 0;
-  display: inline-block;
+  display: block;
   padding: 0;
+  width: 100%;
 }
 
-header li , footer li {
+header li , footer li, .instructions ul li {
   width: 124px;
-  float:left;
+  /* float:left; */
   height:40px;
-  display: inline;
+  display: inline-block;
   margin: 0 10px;
 }
 
-header ul a, footer ul a {
+header ul a, footer ul a , .instructions ul a {
   line-height: 2.5;
   text-align:center;
   width: 100%;
   display: block;
   background: #a9c4d7;
   border-radius: 5px;
+  
+}
+.instructions ul li{
+    width: 206px;
+
+  
+    float: left;
+    display: inherit;
+}
+.instructions ul li * {
+  color:white;
+}
+
+.instructions ol > li {
+
+  clear: both;
+}
+
+.instructions {
+
+  float: left
+}
+.basedUponImage{
+    float: right;
+    margin: 0 0 29px 0;
+}
+
+.screenshot{
+
+    float:left;
+    
+
+    margin: 0px 50px 50px 0;
+
+    /* clear: both; */
+
 }
 
 section, aside, footer{
@@ -176,7 +213,16 @@ hr {
   display: block;
 }
 
+ul.download {
 
+  margin-left: 110px;
+}
+
+ul.download li a{
+  border:1px solid #bdbdbd;
+  background: white;
+  color: black;
+}
 
 aside > div {
   width: 32%;
@@ -200,6 +246,11 @@ footer{
     position:static;
     width:auto;
   }
+
+  aside > div {
+  width: 100%;
+  float:none;
+}
   
   
   section {
