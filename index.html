@@ -59,18 +59,20 @@
 
 
 <aside>
-
-
-
-<div id="github-commits">
-  
-
+<div>
+  <h2>Current version: <span id="#script-version">...</span> </h2>
 </div>
+<div>
 
+<h2>Latest Updates</h2>
 
-
+  <div id="github-commits">
+    <ul class="github-commits-list"><li><span class="github-user"><img class="github-avatar" src="https://www.gravatar.com/avatar/ab3e8d3eb808c7018af975ae0fa218e5?s=20"><a href="https://github.com/vitorreus">vitorreus</a></span><a class="github-commit" title="Fixed empty results. Readme changes" href="https://github.com/vitorreus/betterWikipedia/commit/7d6d7dea8874495596469aaec76266e9eeaeb958">Fixed empty results. Readme changes</a>about 16 hours ago</li><li><span class="github-user"><img class="github-avatar" src="https://www.gravatar.com/avatar/ab3e8d3eb808c7018af975ae0fa218e5?s=20"><a href="https://github.com/vitorreus">vitorreus</a></span><a class="github-commit" title="New screenshot" href="https://github.com/vitorreus/betterWikipedia/commit/70cedd8c6fa5b07d969e07da7b9c0f0b958fc58a">New screenshot</a>3 days ago</li><li><span class="github-user"><img class="github-avatar" src="https://www.gravatar.com/avatar/ab3e8d3eb808c7018af975ae0fa218e5?s=20"><a href="https://github.com/vitorreus">vitorreus</a></span><a class="github-commit" title="Eye candy" href="https://github.com/vitorreus/betterWikipedia/commit/32f243fff53d43a1f71edf9de5de140228144615">Eye candy</a>3 days ago</li><li><span class="github-user"><img class="github-avatar" src="https://www.gravatar.com/avatar/ab3e8d3eb808c7018af975ae0fa218e5?s=20"><a href="https://github.com/vitorreus">vitorreus</a></span><a class="github-commit" title="fixed jquery hashchange problems" href="https://github.com/vitorreus/betterWikipedia/commit/1daadb9decdf59fb38ce1f36173511e3b2dd64ab">fixed jquery hashchange problems</a>3 days ago</li><li><span class="github-user"><img class="github-avatar" src="https://www.gravatar.com/avatar/ab3e8d3eb808c7018af975ae0fa218e5?s=20"><a href="https://github.com/vitorreus">vitorreus</a></span><a class="github-commit" title="Documentation" href="https://github.com/vitorreus/betterWikipedia/commit/9508ce929efb945878ee1d9073a461d9532d092a">Documentation</a>3 days ago</li></ul>
+  </div>
+</div>
+<div>
   <h2>
-  <a name="todo-" class="anchor" href="#todo-"><span class="octicon octicon-link"></span></a>TODO: </h2>
+  <a name="coming-soon" class="anchor" href="#todo-"><span class="octicon octicon-link"></span></a>Coming soon: </h2>
 
   <ul>
   <li>Do a better query of the wikipedia API:
@@ -84,19 +86,46 @@
   <li>Use fancy inlining of content instead of windows</li>
   <li>Make opened links be persistent across browsers restart (Use the hash to save an array of open sections)</li>
   </ul>
-</aside>
 
+  </div>
+
+
+  <span class="clear"></span>
 <script>
     $(function() {
         $('#github-commits').githubInfoWidget(
             { user: 'vitorreus', repo: 'betterWikipedia', branch: 'master', last: 5 });
     });
+
+
+    //get Current script Version:
+
+
+    $.ajax({url:"https://api.github.com/repos/vitorreus/betterWikipedia/contents/betterWikipedia.user.js",
+      success: function(d){
+        var version = (atob(d.content).split("@version")[1].split("/n"))
+
+        $("#script-version").html(version);
+
+        }
+    });
 </script>
+
+</aside>
 
 
       <footer>
-        <p>This project is maintained by <a href="https://github.com/vitorreus">vitorreus</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://IzumiPortfolio.com">Izumi</a></small></p>
+
+      <h2>Send us your feedback</h2>
+
+
+ <ul>
+          <li><a href="http://github.com/vitorreus/betterWikipedia">Contact</a></li>
+          <li><a href="#donate">Donate</a></li> 
+        </ul>
+
+
+        <p>Developed by <a href="https://github.com/vitorreus">Vitor Reus</a></p>
       </footer> 
     <script src="javascripts/scale.fix.js"></script>
     

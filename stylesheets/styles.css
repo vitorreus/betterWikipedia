@@ -99,7 +99,7 @@ header {
   padding: 50px 0;
 }
 
-header, header *,header ul a,aside h2, aside, footer {
+header, header *,header ul a,aside h2, aside, footer, footer * {
   color: white;
   
 }
@@ -112,7 +112,7 @@ aside{
   background:#b2c2cf;
 }
 
-header ul {
+header ul , footer ul {
   list-style:none; 
   text-align: center;
   margin: 24px 0 0 0;
@@ -120,7 +120,7 @@ header ul {
   padding: 0;
 }
 
-header li {
+header li , footer li {
   width: 124px;
   float:left;
   height:40px;
@@ -128,7 +128,7 @@ header li {
   margin: 0 10px;
 }
 
-header ul a {
+header ul a, footer ul a {
   line-height: 2.5;
   text-align:center;
   width: 100%;
@@ -139,9 +139,10 @@ header ul a {
 
 section, aside, footer{
   padding: 50px;
+  clear: both;
 }
 
-section h2{
+section h2, footer h2{
   text-transform:uppercase;
 
 }
@@ -161,6 +162,32 @@ hr {
   margin:0 0 20px;
 }
 
+.github-user{
+  display: none;
+
+}
+
+.github-commit{
+  margin-right: 5px;
+}
+
+.clear{
+  clear: both;
+  display: block;
+}
+
+
+
+aside > div {
+  width: 32%;
+  float:left;
+}
+
+
+footer{
+    text-align: center;
+  
+}
 @media print, screen and (max-width: 960px) {
   
   div.wrapper {
