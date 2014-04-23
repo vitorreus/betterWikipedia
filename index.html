@@ -102,7 +102,7 @@
 
     $.ajax({url:"https://api.github.com/repos/vitorreus/betterWikipedia/contents/betterWikipedia.user.js",
       success: function(d){
-        var version = (atob(d.content).split("@version")[1].split("/n"))
+        var version = (atob(d.content).split("@version")[1].split("/n")[0])
 
         $("#script-version").html(version);
 
